@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AdminNavigationHeader from '../../components/ui/AdminNavigationHeader';
 import AdminSidebar from '../../components/ui/AdminSidebar';
+import Icon from '../../components/AppIcon';
 import ConfigurationDashboard from './components/ConfigurationDashboard';
 import CategoryManagement from './components/CategoryManagement';
 import ProfessionalManagement from './components/ProfessionalManagement';
