@@ -25,8 +25,7 @@ const AdminSidebar = ({ isCollapsed = false, isOpen = false, onClose }) => {
       type: 'section',
       children: [
         { label: 'Visualização', path: '/calendar-management', icon: 'CalendarDays' },
-        { label: 'Agendamentos', path: '/calendar-management?view=appointments', icon: 'Clock' },
-        { label: 'Disponibilidade', path: '/calendar-management?view=availability', icon: 'CalendarCheck' },
+        { label: 'Agendamentos', path: '/appointments-management', icon: 'Clock' },
       ]
     },
     {
@@ -48,6 +47,13 @@ const AdminSidebar = ({ isCollapsed = false, isOpen = false, onClose }) => {
       label: 'Serviços',
       path: '/services-management',
       icon: 'Briefcase',
+      type: 'link'
+    },
+    {
+      id: 'public-interface',
+      label: 'Interface Pública',
+      path: '/public-interface-management',
+      icon: 'Globe',
       type: 'link'
     },
     {
@@ -84,7 +90,7 @@ const AdminSidebar = ({ isCollapsed = false, isOpen = false, onClose }) => {
 
   const handleQuickAction = (action) => {
     console.log('Quick action:', action);
-    
+
     switch (action) {
       case 'new-service':
         // Redirecionar para configurações de serviços
@@ -130,11 +136,10 @@ const AdminSidebar = ({ isCollapsed = false, isOpen = false, onClose }) => {
               <Link
                 key={item?.id}
                 to={item?.path}
-                className={`flex items-center space-x-3 px-3 py-2 rounded-lg text-sm font-medium transition-smooth ${
-                  isActivePath(item?.path)
+                className={`flex items-center space-x-3 px-3 py-2 rounded-lg text-sm font-medium transition-smooth ${isActivePath(item?.path)
                     ? 'bg-primary text-primary-foreground'
                     : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-                } ${isCollapsed ? 'justify-center' : ''}`}
+                  } ${isCollapsed ? 'justify-center' : ''}`}
                 onClick={onClose}
               >
                 <Icon name={item?.icon} size={18} />
@@ -149,18 +154,17 @@ const AdminSidebar = ({ isCollapsed = false, isOpen = false, onClose }) => {
               <div key={item?.id}>
                 <button
                   onClick={() => !isCollapsed && toggleSection(item?.id)}
-                  className={`flex items-center w-full space-x-3 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-smooth ${
-                    isCollapsed ? 'justify-center' : 'justify-between'
-                  }`}
+                  className={`flex items-center w-full space-x-3 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-smooth ${isCollapsed ? 'justify-center' : 'justify-between'
+                    }`}
                 >
                   <div className="flex items-center space-x-3">
                     <Icon name={item?.icon} size={18} />
                     {!isCollapsed && <span>{item?.label}</span>}
                   </div>
                   {!isCollapsed && (
-                    <Icon 
-                      name="ChevronDown" 
-                      size={16} 
+                    <Icon
+                      name="ChevronDown"
+                      size={16}
                       className={`transition-transform ${isExpanded ? 'rotate-180' : ''}`}
                     />
                   )}
@@ -172,10 +176,9 @@ const AdminSidebar = ({ isCollapsed = false, isOpen = false, onClose }) => {
                       <Link
                         key={child?.path}
                         to={child?.path}
-                        className={`flex items-center space-x-3 px-3 py-2 rounded-lg text-sm transition-smooth ${
-                          isActivePath(child?.path)
-                            ? 'bg-primary/10 text-primary' :'text-muted-foreground hover:text-foreground hover:bg-muted'
-                        }`}
+                        className={`flex items-center space-x-3 px-3 py-2 rounded-lg text-sm transition-smooth ${isActivePath(child?.path)
+                            ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                          }`}
                         onClick={onClose}
                       >
                         <Icon name={child?.icon} size={16} />
@@ -238,9 +241,8 @@ const AdminSidebar = ({ isCollapsed = false, isOpen = false, onClose }) => {
   // Desktop sidebar
   if (typeof window !== 'undefined' && window.innerWidth >= 1024) {
     return (
-      <aside className={`fixed left-0 top-16 bottom-0 z-100 transition-all duration-300 ${
-        isCollapsed ? 'w-16' : 'w-64'
-      }`}>
+      <aside className={`fixed left-0 top-16 bottom-0 z-100 transition-all duration-300 ${isCollapsed ? 'w-16' : 'w-64'
+        }`}>
         {sidebarContent}
       </aside>
     );
@@ -258,9 +260,8 @@ const AdminSidebar = ({ isCollapsed = false, isOpen = false, onClose }) => {
       )}
 
       {/* Mobile Sidebar */}
-      <aside className={`fixed left-0 top-16 bottom-0 w-64 z-300 transform transition-transform duration-300 lg:hidden ${
-        isOpen ? 'translate-x-0' : '-translate-x-full'
-      }`}>
+      <aside className={`fixed left-0 top-16 bottom-0 w-64 z-300 transform transition-transform duration-300 lg:hidden ${isOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}>
         {sidebarContent}
       </aside>
     </>

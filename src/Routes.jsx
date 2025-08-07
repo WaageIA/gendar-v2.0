@@ -13,6 +13,8 @@ import ServiceConfiguration from './pages/service-configuration';
 import ClientManagement from './pages/client-management';
 import ClientPortalDashboard from './pages/client-portal-dashboard';
 import ClientAppointmentHistory from './pages/client-appointment-history';
+import AppointmentsManagement from './pages/appointments-management';
+import PublicInterfaceManagement from './pages/public-interface-management';
 
 const Routes = () => {
   return (
@@ -32,6 +34,8 @@ const Routes = () => {
         <Route path="/client-management" element={<ClientManagement />} />
         <Route path="/client-portal-dashboard" element={<ClientPortalDashboard />} />
         <Route path="/client-appointment-history" element={<ClientAppointmentHistory />} />
+        <Route path="/appointments-management" element={<AppointmentsManagement />} />
+        <Route path="/public-interface-management" element={<PublicInterfaceManagement />} />
         <Route path="*" element={<NotFound />} />
       </RouterRoutes>
       </ErrorBoundary>

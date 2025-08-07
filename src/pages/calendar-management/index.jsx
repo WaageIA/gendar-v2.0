@@ -13,7 +13,7 @@ const CalendarManagement = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
-  
+
   // Modal states
   const [appointmentModal, setAppointmentModal] = useState({
     isOpen: false,
@@ -161,9 +161,9 @@ const CalendarManagement = () => {
       appointment: {
         date: date?.toISOString()?.split('T')?.[0],
         startTime: time || '09:00',
-        endTime: time ? 
+        endTime: time ?
           new Date(`2000-01-01T${time}`)?.getTime() + 60 * 60 * 1000 > new Date(`2000-01-01T${time}`)?.getTime() ?
-          new Date(new Date(`2000-01-01T${time}`).getTime() + 60 * 60 * 1000)?.toTimeString()?.slice(0, 5) : '10:00' :'10:00'
+            new Date(new Date(`2000-01-01T${time}`).getTime() + 60 * 60 * 1000)?.toTimeString()?.slice(0, 5) : '10:00' : '10:00'
       },
       mode: 'create'
     });
@@ -185,7 +185,7 @@ const CalendarManagement = () => {
     if (appointmentModal?.mode === 'create') {
       setAppointments(prev => [...prev, appointmentData]);
     } else {
-      setAppointments(prev => 
+      setAppointments(prev =>
         prev?.map(apt => apt?.id === appointmentData?.id ? appointmentData : apt)
       );
     }
@@ -243,9 +243,8 @@ const CalendarManagement = () => {
         onClose={() => setIsMobileSidebarOpen(false)}
       />
       {/* Main Content */}
-      <div className={`pt-16 transition-all duration-300 ${
-        isSidebarCollapsed ? 'lg:pl-16' : 'lg:pl-64'
-      }`}>
+      <div className={`pt-16 transition-all duration-300 ${isSidebarCollapsed ? 'lg:pl-16' : 'lg:pl-64'
+        }`}>
         <div className="flex h-[calc(100vh-4rem)]">
           {/* Calendar Section */}
           <div className="flex-1 flex flex-col">
